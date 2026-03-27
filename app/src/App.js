@@ -2,10 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import {useEffect, useState} from "react";
 import {TaskList} from "./components/TaskList";
+import {UtilityBar} from "./components/UtilityBar";
 
 function App() {
 
     const [data, setData] = useState(null);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         fetch('/data.json')
@@ -18,13 +20,19 @@ function App() {
         return <div>Loading...</div>;
     }
 
+    // Recherche
+
+    const filteredTasks = data.taches.filter(task => task.title.toLowerCase().includes(search.toLowerCase())
+    );
+
     return (
         <div className="App">
             <header className="App-header">
-            <h1 className={'home-title'}>TODO List</h1>
+                <h1 className={'home-title'}>TODO List</h1>
             </header>
             <main>
-                <TaskList tasks={data.taches} />
+                <UtilityBar onSearch={setSearch}/>
+                <TaskList tasks={filteredTasks} />
             </main>
         </div>
     );
