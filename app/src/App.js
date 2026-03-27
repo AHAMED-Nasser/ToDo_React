@@ -16,6 +16,14 @@ function App() {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
+    const handleAddTask = (newTask) => {
+        const updatedData = {
+            ...data,
+            taches: [newTask, ...data.taches]
+        };
+        setData(updatedData);
+    }
+
     if (!data) {
         return <div>Loading...</div>;
     }
@@ -31,7 +39,7 @@ function App() {
                 <h1 className={'home-title'}>TODO List</h1>
             </header>
             <main>
-                <UtilityBar onSearch={setSearch}/>
+                <UtilityBar onSearch={setSearch} onAddTask={handleAddTask} />
                 <TaskList tasks={filteredTasks} />
             </main>
         </div>
