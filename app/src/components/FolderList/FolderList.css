@@ -1,0 +1,18 @@
+.folder-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.folder-item-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.folder-icon { font-size: 2rem; margin-bottom: 10px; }
+.folder-title { display: block; font-size: 1.2rem; margin-bottom: 5px; }
