@@ -1,4 +1,4 @@
-import '../../css/Utility/SearchBar.css';
+import './SearchBar.css';
 export function SearchBar({onSearchChange}) {
     return (
         <input

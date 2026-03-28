@@ -1,8 +1,9 @@
 import logo from './logo.svg';
+import {ETAT_TERMINE} from './stats.js';
 import './App.css';
 import {useEffect, useState} from "react";
-import {TaskList} from "./components/TaskList";
-import {UtilityBar} from "./components/UtilityBar";
+import {TaskList} from "./components/TaskList/TaskList";
+import {UtilityBar} from "./components/UtilityBar/UtilityBar";
 
 function App() {
 
@@ -22,8 +23,11 @@ function App() {
 
     // Recherche
 
-    const filteredTasks = data.taches.filter(task => task.title.toLowerCase().includes(search.toLowerCase())
-    );
+    const filteredTasks = data.taches.filter(task => {
+        const matchsSearch = task.title.toLowerCase().includes(search.toLowerCase());
+        const isNotFinished = !ETAT_TERMINE.includes(task.etat);
+        return matchsSearch && isNotFinished;
+    });
 
     return (
         <div className="App">

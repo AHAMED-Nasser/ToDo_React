@@ -1,4 +1,4 @@
-import '../css/TaskList.css';
+import './TaskList.css';
 export function TaskList({tasks}) {
     return (
         <ul>
