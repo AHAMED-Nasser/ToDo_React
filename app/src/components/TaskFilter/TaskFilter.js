@@ -1,4 +1,4 @@
-import '../../css/Utility/TaskFilter.css'
+import './TaskFilter.css'
 
 export function TaskFilter() {
     return (

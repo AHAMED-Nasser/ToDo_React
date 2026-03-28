@@ -1,4 +1,4 @@
-import '../../css/Utility/SelectMode.css'
+import './SelectMode.css'
 
 export function SelectMode() {
     return (
