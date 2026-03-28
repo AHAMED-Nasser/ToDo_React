@@ -18,7 +18,7 @@ function App() {
     }, []);
 
     if (!data) {
-        return <div>Loading...</div>;
+        return <div>Erreur dans le fichier JSON</div>;
     }
 
     // Recherche

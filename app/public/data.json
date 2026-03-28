@@ -89,6 +89,19 @@
       "date_echeance": "2026-05-01",
       "etat": "Nouveau",
       "equipiers": []
+    },
+    {
+      "id": 110,
+      "title": "9. Lire one piece",
+      "description": "Lire les toms 100 à 110 de One piece, avant la reprise de l'anime.",
+      "date_creation": "2026-28-03",
+      "date_echeance": "2026-13-04",
+      "etat": "Nouveau",
+      "equipiers": [
+        {
+          "name": "Moi même"
+        }
+      ]
     }
   ],
   "dossiers": [
