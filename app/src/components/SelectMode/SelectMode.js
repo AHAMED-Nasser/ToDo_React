@@ -1,10 +1,15 @@
 import './SelectMode.css'
 
-export function SelectMode() {
+export function SelectMode({currentMode, onModeChange}) {
     return (
-        <select>
-            <option value="task-mode">Mode tâche</option>
-            <option value="directory-mode">Mode dossier</option>
+        <select
+            value={currentMode}
+            onChange={(e) => onModeChange(e.target.value)}
+            className="select-mode"
+        >
+            <option value="all">Tout voir</option>
+            <option value="task">Tâches</option>
+            <option value="directory">Dossiers</option>
         </select>
     )
 }
