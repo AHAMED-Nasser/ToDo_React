@@ -1,97 +1,47 @@
-/* Le conteneur de la liste */
-.task-list-container {
-    padding: 10px;
-}
-
-/* LA GRILLE (3 colonnes) */
-.task-grid {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de taille égale */
-    gap: 20px; /* Espace entre les cartes */
-}
-
-/* Style de chaque "carte" de tâche */
-.task-item-card {
-    border: 1px solid rgba(33, 54, 76, 0.31);
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer; /* Indique que c'est cliquable */
+.task-card-header {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Espace les éléments verticalement */
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.task-item-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    background-color: #dbdbdb;
-}
-
-.title-task {
-    font-size: 1.1rem;
-    color: var(--primary);
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-/* Description tronquée sur la carte */
-.task-description-excerpt {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 15px;
-    flex-grow: 1; /* Prend l'espace disponible */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limite à 3 lignes maximum */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Ajoute "..." à la fin */
-}
-
-/* Petits badges pour le statut et les équipiers dans la modal */
-.status-badge {
-    padding: 4px 10px;
-    border-radius: 8px;
+.expand-trigger {
+    background: none;
+    border: none;
+    cursor: pointer;
     font-size: 0.8rem;
-    font-weight: bold;
-    color: white;
-    display: inline-block;
+    transition: transform 0.3s ease;
+    color: var(--primary);
 }
 
-.status-badge.status-nouveau { background-color: var(--status-nouveau); }
-.status-badge.status-en-attente { background-color: var(--status-attente); color: #333;}
-.status-badge.status-réussi { background-color: var(--status-reussi); }
-.status-badge.status-abandonné { background-color: var(--status-abandon); }
+.expand-trigger.down { transform: rotate(180deg); }
+.expand-trigger.up { transform: rotate(0deg); }
 
-.team-list-complete {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px;
+.task-folders-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 5px;
+    margin: 10px 0;
 }
 
-.team-member-badge {
-    background-color: #eee;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
+.folder-badge {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
 }
 
-/* Adaptabilité (Responsive) pour petits écrans */
-@media (max-width: 768px) {
-    .task-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
-    }
+.more-indicator {
+    font-size: 0.7rem;
+    color: #888;
 }
 
-@media (max-width: 480px) {
-    .task-grid {
-        grid-template-columns: 1fr; /* 1 colonne sur mobile */
-    }
+.task-full-details {
+    margin-top: 10px;
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
