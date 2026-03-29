@@ -14,12 +14,12 @@ export function UtilityBar({onSearch, currentMode, onModeChange, onAddTask}) {
         <div className={'utility-bar'}>
             <div>
                 <SearchBar onSearchChange={handleSearch} />
-                <AddTask onAddTask={onAddTask} />
+                {/* <AddTask onAddTask={onAddTask}/> */}
                 <SelectMode
                     currentMode={currentMode}
                     onModeChange={onModeChange}
                 />
-                <TaskFilter />
+                {/*<TaskFilter/>*/}
             </div>
         </div>
     )
