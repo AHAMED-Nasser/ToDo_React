@@ -92,7 +92,11 @@ function App() {
                 {(viewMode === 'task' || viewMode === 'all') && (
                     <>
                         {viewMode === 'all' && <h2>Tâches</h2>}
-                        <TaskList tasks={filteredTasks}/>
+                        <TaskList
+                            tasks={filteredTasks}
+                            folders={folders}
+                            relations={relations}
+                        />
                     </>
                 )}
 

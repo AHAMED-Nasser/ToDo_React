@@ -1,63 +1,77 @@
+import React, { useState } from 'react';
 import './TaskList.css';
-import {Modal} from '../Modal/Modal.js';
-import {useState} from "react";
-export function TaskList({tasks}) {
 
-    const [selectedTask, setSelectedTask] = useState(null);
+export function TaskList({ tasks, folders, relations }) {
+    // État pour gérer quelles tâches sont en "mode Complet" (ID des tâches dépliées)
+    const [expandedTasks, setExpandedTasks] = useState([]);
 
-    const handleCloseModal = () => {
-        setSelectedTask(null);
-    }
+    const toggleExpand = (taskId) => {
+        setExpandedTasks(prev =>
+            prev.includes(taskId) ? prev.filter(id => id !== taskId) : [...prev, taskId]
+        );
+    };
+
+    // Fonction pour obtenir les dossiers d'une tâche spécifique
+    const getFoldersForTask = (taskId) => {
+        const folderIds = relations
+            .filter(rel => rel.tache === taskId)
+            .map(rel => rel.dossier);
+        return folders.filter(f => folderIds.includes(f.id));
+    };
 
     return (
-        <div className="task-list-container">
-            {/* GRILLE DES TÂCHES */}
-            <ul className="task-grid">
-                {tasks.map(task => (
-                    // On ajoute un écouteur de clic sur le <li>
-                    <li key={task.id} className="task-item-card" onClick={() => setSelectedTask(task)}>
-                        <strong className={'title-task'}>{task.title}</strong>
-                        {/* Affiche la description (Tronquée si trop longue) */}
-                        <p className="task-description-excerpt">
-                            {task.description ? task.description : <i>Pas de description</i>}
-                        </p>
-                        <span className={`status-badge status-${task.etat.toLowerCase().replace(" ", "-")}`}>
-                            {task.etat}
-                        </span>
-                    </li>
-                ))}
-            </ul>
+        <ul className="task-grid">
+            {tasks.map(task => {
+                const taskFolders = getFoldersForTask(task.id);
+                const isExpanded = expandedTasks.includes(task.id);
 
-            {/* MODAL DE DÉTAIL (Affiche uniquement si selectedTask n'est pas null) */}
-            {selectedTask && (
-                <Modal
-                    title={`Détails de la tâche : ${selectedTask.title}`}
-                    onClose={handleCloseModal}>
-                    <div className="task-details-complete">
-                        <p><strong>Identifiant :</strong> {selectedTask.id}</p>
-                        <p><strong>Description :</strong> {selectedTask.description || <i>Pas de description.</i>}</p>
-                        <p><strong>Date création :</strong> {selectedTask.date_creation}</p>
-                        <p><strong>Date échéance :</strong> {selectedTask.date_echeance}</p>
-                        <p>
-                            <strong>Etat : </strong>
-                            <span className={`status-badge status-${selectedTask.etat.toLowerCase().replace(" ", "-")}`}>
-                                {selectedTask.etat}
-                            </span>
-                        </p>
+                // Mode Simple : on ne garde que les 2 premiers dossiers
+                const displayedFolders = isExpanded ? taskFolders : taskFolders.slice(0, 2);
 
-                        <strong>Equipiers :</strong>
-                        {selectedTask.equipiers && selectedTask.equipiers.length > 0 ? (
-                            <ul className={'team-list-complete'}>
-                                {selectedTask.equipiers.map((team) => (
-                                    <li key={team.name} className="team-member-badge">{team.name}</li>
-                                ))}
-                            </ul>
-                        ) : (
-                            <p><i>Aucun équipier</i></p>
+                return (
+                    <li key={task.id} className={`task-item-card ${isExpanded ? 'expanded' : ''}`}>
+                        <div className="task-card-header">
+                            <strong className="title-task">{task.title}</strong>
+                            {/* Le triangle pour basculer de mode */}
+                            <button
+                                className={`expand-trigger ${isExpanded ? 'up' : 'down'}`}
+                                onClick={() => toggleExpand(task.id)}
+                            >
+                                ▲
+                            </button>
+                        </div>
+
+                        <p className="task-due-date">Échéance : {task.date_echeance}</p>
+
+                        {/* Affichage des dossiers (badges colorés) */}
+                        <div className="task-folders-list">
+                            {displayedFolders.map(f => (
+                                <span
+                                    key={f.id}
+                                    className="folder-badge"
+                                    style={{ backgroundColor: f.color }}
+                                >
+                                    {f.title}
+                                </span>
+                            ))}
+                            {!isExpanded && taskFolders.length > 2 && (
+                                <span className="more-indicator">+{taskFolders.length - 2}</span>
+                            )}
+                        </div>
+
+                        {/* Mode Complet : affiche la description */}
+                        {isExpanded && (
+                            <div className="task-full-details">
+                                <hr />
+                                <p className="task-description">
+                                    {task.description || <i>Aucune description</i>}
+                                </p>
+                                <p className="task-status">État : <strong>{task.etat}</strong></p>
+                            </div>
                         )}
-                    </div>
-                </Modal>
-            )}
-        </div>
-    )
+                    </li>
+                );
+            })}
+        </ul>
+    );
 }
