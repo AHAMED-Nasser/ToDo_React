@@ -1,15 +1,41 @@
-.task-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 24px;
-    padding: 20px 0;
+/* TaskList.css */
+.task-item-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
 }
 
-.task-item-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+.task-item-card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-details {
+    background: #f1f5f9;
+    color: var(--text-muted);
+    border: none;
+    padding: 6px 12px;
     border-radius: 20px;
-    padding: 24px;
-    transition: all 0.3s ease;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-details.active {
+    background: var(--primary);
+    color: white;
+}
+
+.folder-badge {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

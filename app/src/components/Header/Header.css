@@ -1,34 +1,37 @@
-.app-header {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 24px 40px;
+/* Header.css */
+.stats-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
-    box-shadow: var(--shadow);
+    gap: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
 }
 
-.home-title {
-    margin: 0;
-    font-size: 1.8rem;
-    background: linear-gradient(to right, #6366f1, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-}
-
-.counters {
+.pie-chart {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* Le dégradé sera injecté dynamiquement via l'attribut style */
+    position: relative;
     display: flex;
-    gap: 20px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
 }
 
-.counters strong {
+.pie-chart::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--card-bg);
+    border-radius: 50%;
+}
+
+.percentage-label {
+    position: relative;
+    font-weight: 800;
     color: var(--primary);
-    font-size: 1.1rem;
 }
