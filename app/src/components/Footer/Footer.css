@@ -1,0 +1,44 @@
+.app-footer-bar {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 900;
+}
+
+.main-add-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+.main-add-btn:hover {
+    transform: scale(1.1);
+}
+
+.add-selection-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.add-selection-menu button {
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-selection-menu button:hover {
+    background: #f0f7ff;
+    border-color: var(--primary);
+}
