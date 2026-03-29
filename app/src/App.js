@@ -62,6 +62,19 @@ function App() {
         folder.title.toLowerCase().includes(search.toLowerCase())
     );
 
+    const addTask = (newTask) => {
+        const taskWithId = {
+            ...newTask,
+            id: Date.now(),
+            date_creation: new Date().toLocaleDateString('fr-FR')
+        };
+
+        setData(prevData => ({
+            ...prevData,
+            taches: [...prevData.taches, taskWithId]
+        }));
+    };
+
     return (
         <div className="App">
             <header className="App-header">
@@ -72,6 +85,7 @@ function App() {
                     onSearch={setSearch}
                     currentMode={viewMode}
                     onModeChange={setViewMode}
+                    onAddTask={addTask}
                 />
                 {(viewMode === 'task' || viewMode === 'all') && (
                     <>

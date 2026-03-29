@@ -1,7 +1,22 @@
-import './AddTask.css'
+import React, { useState } from 'react';
+import { Modal } from '../Modal/Modal';
+import { TaskForm } from '../TaskForm/TaskForm';
+import './AddTask.css';
 
-export function AddTask() {
+export function AddTask({ onAddTask }) {
+    const [showModal, setShowModal] = useState(false);
+
     return (
-        <button type={'button'}>Créer une tâche</button>
-    )
+        <>
+            <button className="add-task-btn" onClick={() => setShowModal(true)}>
+                + Ajouter Tâche
+            </button>
+
+            {showModal && (
+                <Modal title="Nouvelle Tâche" onClose={() => setShowModal(false)}>
+                    <TaskForm onSubmit={onAddTask} onClose={() => setShowModal(false)} />
+                </Modal>
+            )}
+        </>
+    );
 }

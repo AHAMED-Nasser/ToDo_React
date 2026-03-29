@@ -5,7 +5,7 @@ import {SelectMode} from "../SelectMode/SelectMode";
 import {TaskFilter} from "../TaskFilter/TaskFilter";
 import {useState} from "react";
 
-export function UtilityBar({onSearch, currentMode, onModeChange}) {
+export function UtilityBar({onSearch, currentMode, onModeChange, onAddTask}) {
     const handleSearch = (value) => {
         onSearch(value);
     }
@@ -14,7 +14,7 @@ export function UtilityBar({onSearch, currentMode, onModeChange}) {
         <div className={'utility-bar'}>
             <div>
                 <SearchBar onSearchChange={handleSearch} />
-                <AddTask />
+                <AddTask onAddTask={onAddTask} />
                 <SelectMode
                     currentMode={currentMode}
                     onModeChange={onModeChange}
