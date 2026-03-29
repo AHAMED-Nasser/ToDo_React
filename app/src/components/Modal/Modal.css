@@ -1,0 +1,111 @@
+/* Modal.css - Refonte complète */
+
+/* 1. L'Arrière-plan (Overlay) :
+   Utilisation d'un flou d'arrière-plan (backdrop-filter)
+   pour isoler le modal tout en gardant le contexte. */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.4); /* Teinte sombre et transparente */
+    backdrop-filter: blur(8px); /* L'effet de flou moderne */
+    -webkit-backdrop-filter: blur(8px); /* Pour Safari */
+    display: flex;
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    z-index: 1000; /* S'assure qu'il est au-dessus de tout */
+    animation: fadeIn 0.3s ease; /* Animation d'apparition douce */
+}
+
+/* 2. Le Conteneur du Modal :
+   Design "Glassmorphism" : fond blanc translucide,
+   coins très arrondis, et ombre portée douce. */
+.modal-content {
+    background: rgba(255, 255, 255, 0.9); /* Blanc translucide */
+    backdrop-filter: blur(4px); /* Léger flou interne */
+    width: 90%;
+    max-width: 500px; /* Largeur maximale pour les grands écrans */
+    border-radius: 24px; /* Coins très arrondis */
+    padding: 32px; /* Grand padding pour aérer */
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Bordure subtile */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Ombre portée profonde */
+    animation: slideUp 0.3s ease-out; /* Animation d'entrée vers le haut */
+}
+
+/* 3. L'En-tête du Modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px; /* Espace avec le formulaire */
+}
+
+/* Le Titre du Modal */
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 800; /* Très gras */
+    letter-spacing: -0.025em;
+    color: var(--text-main);
+    margin: 0;
+}
+
+/* 4. Le Bouton Fermer (le 'X') :
+   Remplacé par un bouton circulaire discret qui s'anime au survol. */
+.close-button {
+    background: #f1f5f9; /* Fond gris très clair */
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%; /* Circulaire */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    padding: 0;
+    line-height: 1;
+}
+
+.close-button:hover {
+    background: #e2e8f0; /* Gris un peu plus sombre au survol */
+    transform: rotate(90deg); /* Petite rotation fun */
+    color: #ef4444; /* Rouge pour indiquer la fermeture */
+}
+
+.add-selection-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-selection-menu button {
+    color: white;
+    width: 50%;
+}
+
+/* 5. Les Animations */
+
+/* Apparition douce de l'overlay */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Le modal glisse légèrement vers le haut en apparaissant */
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

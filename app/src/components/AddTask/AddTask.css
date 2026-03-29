@@ -1,0 +1,15 @@
+button {
+    background: var(--primary);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    height: 30px;
+    border-radius: 3px;
+    padding: 0 5px;
+}
+
+/*button:hover {*/
+/*    background-color: #eeeeee;*/
+/*    color: black;*/
+/*}*/

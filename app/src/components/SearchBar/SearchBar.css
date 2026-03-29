@@ -1,0 +1,9 @@
+input {
+    border-radius: 5px;
+    width: 35%;
+    height: 30px;
+    border: solid 1px #aaaaaa;
+    padding: 0 5px;
+    outline: none;
+    font-weight: bold;
+}

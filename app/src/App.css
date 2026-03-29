@@ -1,6 +1,14 @@
-.home-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 80px 0;
+.App {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
 }
