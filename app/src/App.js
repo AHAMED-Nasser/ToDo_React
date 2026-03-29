@@ -7,6 +7,7 @@ import {UtilityBar} from "./components/UtilityBar/UtilityBar";
 import {FolderList} from "./components/FolderList/FolderList";
 import {Modal} from "./components/Modal/Modal";
 import {FolderForm} from "./components/FolderForm/FolderForm";
+import {Header} from "./components/Header/Header";
 
 function App() {
     const [data, setData] = useState(null);
@@ -78,7 +79,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <h1 className={'home-title'}>TODO List</h1>
+                {data && <Header tasks={data.taches} />}
             </header>
             <main>
                 <UtilityBar
