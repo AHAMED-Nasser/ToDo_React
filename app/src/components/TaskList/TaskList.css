@@ -1,47 +1,41 @@
-.task-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+/* TaskList.css */
+.task-item-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
 }
 
-.expand-trigger {
-    background: none;
+.task-item-card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-details {
+    background: #f1f5f9;
+    color: var(--text-muted);
     border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
     cursor: pointer;
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-    color: var(--primary);
+    transition: all 0.2s;
 }
 
-.expand-trigger.down { transform: rotate(180deg); }
-.expand-trigger.up { transform: rotate(0deg); }
-
-.task-folders-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin: 10px 0;
+.btn-details.active {
+    background: var(--primary);
+    color: white;
 }
 
 .folder-badge {
+    padding: 4px 10px;
+    border-radius: 8px;
     font-size: 0.7rem;
-    padding: 2px 8px;
-    border-radius: 10px;
+    font-weight: 600;
     color: white;
-    font-weight: bold;
-}
-
-.more-indicator {
-    font-size: 0.7rem;
-    color: #888;
-}
-
-.task-full-details {
-    margin-top: 10px;
-    animation: slideDown 0.2s ease-out;
-}
-
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }

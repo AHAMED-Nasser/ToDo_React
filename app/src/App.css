@@ -1,20 +1,14 @@
 .App {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
-    min-height: 100vh;
+    padding: 40px 20px;
 }
 
-.App-header {
-    text-align: center;
-    padding: 20px 0;
-    border-bottom: 2px solid #eee;
-    margin-bottom: 30px;
-}
-
-.home-title {
-    font-size: 2.5rem;
-    color: var(--primary);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
 }

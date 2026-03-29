@@ -1,34 +1,30 @@
 .utility-bar {
-    background: var(--card-bg);
-    padding: 15px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    padding: 12px 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    margin-bottom: 25px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow);
 }
 
 .utility-bar > div {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    gap: 15px;
 }
 
-/* Style pour les inputs et boutons génériques dans la barre */
-/*.utility-bar input, .utility-bar button {*/
-/*    padding: 10px 15px;*/
-/*    border: 1px solid #ddd;*/
-/*    border-radius: 8px;*/
-/*    outline: none;*/
-/*}*/
+/* Style des inputs */
+.utility-bar input, .utility-bar select {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
 
-/*.utility-bar button {*/
-/*    background: var(--primary);*/
-/*    border: none;*/
-/*    color: white;*/
-/*    cursor: pointer;*/
-/*    transition: opacity 0.2s;*/
-/*}*/
-
-.utility-bar button:hover {
-    opacity: 0.8;
+.utility-bar input:focus {
+    outline: 2px solid var(--primary);
+    border-color: transparent;
 }

@@ -15,8 +15,8 @@ export function AddTask({ onAddTask, onAddFolder }) {
             {modalType === 'selection' && (
                 <Modal title="Que voulez-vous ajouter ?" onClose={() => setModalType(null)}>
                     <div className="add-selection-menu">
-                        <button style={{color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={() => setModalType('task')}>Nouvelle Tâche</button>
-                        <button style={{color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={() => setModalType('folder')}>Nouveau Dossier</button>
+                        <button onClick={() => setModalType('task')}>Nouvelle Tâche</button>
+                        <button onClick={() => setModalType('folder')}>Nouveau Dossier</button>
                     </div>
                 </Modal>
             )}

@@ -3,7 +3,7 @@ import './UtilityBar.css';
 import {AddTask} from "../AddTask/AddTask";
 import {SelectMode} from "../SelectMode/SelectMode";
 import {TaskFilter} from "../TaskFilter/TaskFilter";
-import {useState} from "react";
+import React, {useState} from "react";
 
 export function UtilityBar({onSearch, currentMode, onModeChange, onAddTask}) {
     const handleSearch = (value) => {
@@ -14,12 +14,12 @@ export function UtilityBar({onSearch, currentMode, onModeChange, onAddTask}) {
         <div className={'utility-bar'}>
             <div>
                 <SearchBar onSearchChange={handleSearch} />
-                <AddTask onAddTask={onAddTask} />
+                {/* <AddTask onAddTask={onAddTask}/> */}
                 <SelectMode
                     currentMode={currentMode}
                     onModeChange={onModeChange}
                 />
-                <TaskFilter />
+                {/*<TaskFilter/>*/}
             </div>
         </div>
     )

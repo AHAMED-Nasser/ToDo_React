@@ -34,10 +34,11 @@ export function TaskList({ tasks, folders, relations }) {
                             <strong className="title-task">{task.title}</strong>
                             {/* Le triangle pour basculer de mode */}
                             <button
-                                className={`expand-trigger ${isExpanded ? 'up' : 'down'}`}
+                                className={`btn-details ${isExpanded ? 'active' : ''}`}
                                 onClick={() => toggleExpand(task.id)}
+                                title={isExpanded ? "Voir moins" : "Voir détails"}
                             >
-                                ▲
+                                {isExpanded ? "Réduire" : "Détails"}
                             </button>
                         </div>
 

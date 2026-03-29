@@ -9,6 +9,7 @@ import {Modal} from "./components/Modal/Modal";
 import {FolderForm} from "./components/FolderForm/FolderForm";
 import {Header} from "./components/Header/Header";
 import {Footer} from "./components/Footer/Footer";
+import {TaskForm} from "./components/TaskForm/TaskForm";
 
 function App() {
     const [data, setData] = useState(null);
@@ -17,6 +18,7 @@ function App() {
     const [folders, setFolders] = useState([]);
     const [relations, setRelations] = useState('');
     const [isCreatingFolder, setIsCreatingFolder] = useState(false);
+    const [isCreatingTask, setIsCreatingTask] = useState(false);
 
     useEffect(() => {
         fetch('/data.json')

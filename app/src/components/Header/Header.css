@@ -1,53 +1,37 @@
-.app-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.counters p {
-    margin: 5px 0;
-    font-size: 1.1rem;
-}
-
+/* Header.css */
 .stats-container {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
 }
 
 .pie-chart {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-
-.legend {
-    list-style: none;
-    padding: 0;
-    font-size: 0.85rem;
-}
-
-.legend li {
+    /* Le dégradé sera injecté dynamiquement via l'attribut style */
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
 }
 
-.dot {
-    width: 10px;
-    height: 10px;
+.pie-chart::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: var(--card-bg);
     border-radius: 50%;
 }
-/* Couleurs correspondantes aux badges */
-.status-nouveau { background: #3498db; }
-.status-en-attente { background: #f1c40f; }
-.status-réussi { background: #2ecc71; }
-.status-abandonné { background: #e74c3c; }
+
+.percentage-label {
+    position: relative;
+    font-weight: 800;
+    color: var(--primary);
+}
