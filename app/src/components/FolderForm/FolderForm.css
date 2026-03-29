@@ -4,6 +4,13 @@
     gap: 20px;
 }
 
+.form-group {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
 .form-group label {
     display: block;
     font-size: 0.85rem;
@@ -18,7 +25,7 @@
     width: 100%;
     padding: 12px 16px;
     border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(0, 0, 0, 0.48);
     font-family: inherit;
     transition: all 0.2s;
     background: #f8fafc;
@@ -38,11 +45,24 @@
     margin-top: 10px;
 }
 
+.btn-cancel {
+    background-color: red;
+    transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
 .btn-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: var(--primary);
     color: white;
     padding: 12px 24px;
-    border-radius: 12px;
+    border-radius: 3px;
     font-weight: 600;
     border: none;
     cursor: pointer;
@@ -50,7 +70,6 @@
 }
 
 .btn-submit:hover {
-    background: var(--primary-hover);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
