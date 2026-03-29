@@ -1,7 +1,7 @@
 button {
     background: var(--primary);
     border: none;
-    color: white;
+    color: #ffffff;
     cursor: pointer;
     transition: opacity 0.2s;
     height: 30px;

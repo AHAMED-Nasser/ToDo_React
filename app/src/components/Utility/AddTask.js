@@ -1,76 +1,43 @@
-import '../../css/Utility/AddTask.css'
-import {useState} from "react";
+import React, { useState } from 'react';
+import { Modal } from '../Modal/Modal';
+import { TaskForm } from '../TaskForm/TaskForm';
+import { FolderForm } from '../FolderForm/FolderForm';
+import '../AddTask/AddTask.css';
 
-export function AddTask({ onAddTask }) {
-
-    const [isOpen, setIsOpen] = useState(false);
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [taskState, setTaskState] = useState("Nouveau");
-    const [limitDate, setLimitDate] = useState(new Date().toLocaleDateString());
-
-    const handleSubmit = (e) =>  {
-        e.preventDefault();
-        if (!title) return;
-
-        const newTask = {
-            id: Date.now(),
-            title: title,
-            description: description,
-            date_creation: new Date().toLocaleDateString(),
-            date_echeance: limitDate,
-            etat: taskState,
-            equipiers: []
-        };
-
-        onAddTask(newTask);
-        setTitle("");
-        setIsOpen(false);
-    }
+export function AddTask({ onAddTask, onAddFolder }) {
+    const [modalType, setModalType] = useState(null); // 'task', 'folder' ou null
 
     return (
-        <>
-            <button type={'button'} onClick={() => setIsOpen(true)}>
-                Créer une tâche
-            </button>
-            {isOpen && (
-                <div className="modal-overlay">
-                    <div className="modal-content">
-                        <h2>Nouvelle tâche</h2>
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                placeholder="Titre de la tâche..."
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                autoFocus
-                            />
-                            <textarea
-                                placeholder="Description de votre tâche"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                                autoFocus
-                            />
-                            <input
-                                type="date"
-                                value={limitDate}
-                                onChange={(e) => setLimitDate(e.target.value)}
-                            />
-                            <select onChange={(e) => setTaskState(e.target.value)}>
-                                <option value="Nouveau">Nouveau</option>
-                                <option value="En cours">En cours</option>
-                                <option value="Réussi">Réussi</option>
-                                <option value="En attente">En attente</option>
-                                <option value="Abandonné">Abandonné</option>
-                            </select>
-                            <div className="modal-buttons">
-                                <button type="submit">Ajouter</button>
-                                <button type="button" onClick={() => setIsOpen(false)}>Annuler</button>
-                            </div>
-                        </form>
+        <div className="add-task-container">
+            {/* Bouton "+" flottant ou fixe selon votre CSS */}
+            <button className="main-add-btn" onClick={() => setModalType('selection')}>+</button>
+
+            {modalType === 'selection' && (
+                <Modal title="Que voulez-vous ajouter ?" onClose={() => setModalType(null)}>
+                    <div className="add-selection-menu">
+                        <button style={{color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={() => setModalType('task')}>Nouvelle Tâche</button>
+                        <button style={{color: 'black', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={() => setModalType('folder')}>Nouveau Dossier</button>
                     </div>
-                </div>
+                </Modal>
             )}
-        </>
-    )
+
+            {modalType === 'task' && (
+                <Modal title="Créer une Tâche" onClose={() => setModalType(null)}>
+                    <TaskForm
+                        onSubmit={onAddTask}
+                        onClose={() => setModalType(null)}
+                    />
+                </Modal>
+            )}
+
+            {modalType === 'folder' && (
+                <Modal title="Créer un Dossier" onClose={() => setModalType(null)}>
+                    <FolderForm
+                        onSubmit={onAddFolder}
+                        onClose={() => setModalType(null)}
+                    />
+                </Modal>
+            )}
+        </div>
+    );
 }

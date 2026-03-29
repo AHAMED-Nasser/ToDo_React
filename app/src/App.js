@@ -8,6 +8,7 @@ import {FolderList} from "./components/FolderList/FolderList";
 import {Modal} from "./components/Modal/Modal";
 import {FolderForm} from "./components/FolderForm/FolderForm";
 import {Header} from "./components/Header/Header";
+import {Footer} from "./components/Footer/Footer";
 
 function App() {
     const [data, setData] = useState(null);
@@ -115,6 +116,10 @@ function App() {
                     </>
                 )}
             </main>
+            <Footer
+                onAddTask={addTask}
+                onAddFolder={addFolder}
+            />
         </div>
     );
 }
